@@ -9,3 +9,7 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
 }
+
+.uk-card {
+    margin-top: 120px;
+}
