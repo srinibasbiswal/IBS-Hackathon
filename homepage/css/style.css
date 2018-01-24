@@ -1,0 +1,16 @@
+.uk-navbar-container {
+	background-color: pink !important;
+}
+
+body {
+	background-image: url(../img/train_bg.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    -moz-transform: scale(0.7, 0.7);
+    /* Moz-browsers */
+    zoom: 0.7;
+    /* Other non-webkit browsers */
+    zoom: 70%;
+}
