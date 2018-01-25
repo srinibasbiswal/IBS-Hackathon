@@ -1,12 +1,16 @@
 package com.Controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.DAO.Service;
@@ -32,11 +36,11 @@ public class Control {
 		String result=(String)service.login(login);
 		ModelAndView model;
 		if(result==null) {
-			model=new ModelAndView("Profile");
+			model=new ModelAndView("Welcome");
 		model.addObject("msg","Invalid User Id or Password");
 		
 		}else {
-			model=new ModelAndView("Home");
+			model=new ModelAndView("Profile");
 			request.getSession().setAttribute("id", result);
 			
 		}
@@ -51,10 +55,42 @@ public class Control {
 		int result=service.register(register);
 		if(result==1) {
 			
-			model.addObject("success","You Have SuccessFully Registered");
+			model.addObject("msg","You Have SuccessFully Registered");
 		}else {
-			model.addObject("failure","Registration Failed... Please Try again");
+			model.addObject("msg","Registration Failed... Please Try again");
 		}
 		return model;
 	}
+	@RequestMapping(value="/request",method=RequestMethod.POST)
+	public ModelAndView sendRequest(@RequestParam  Map<String,String> req,HttpSession session) {
+		ModelAndView model=new ModelAndView("page name");
+		String id=(String) session.getAttribute("id");
+		String receiver=req.get("rec");
+		String pnr=req.get("pnr");
+		String seat=req.get("seat");
+		String result=service.send(id,receiver,pnr,seat);
+		if(result.equalsIgnoreCase("sent")) {
+			model.addObject("msg","Successfullly Sent");
+		}else {
+			model.addObject("msg","Unable to Send Request");
+		}
+		return model;
+	}
+	@RequestMapping(value="/accept",method=RequestMethod.POST)
+	public ModelAndView accept(@RequestParam  Map<String,String> acc,HttpSession session) {
+		ModelAndView model=new ModelAndView("page name");
+		String id=(String) session.getAttribute("id");
+		String send=acc.get("sender");
+		String pnr=acc.get("pnr");
+		String seat=acc.get("seat");
+		String result=service.accept(id,send,pnr,seat);
+		if(result.equalsIgnoreCase("accepted")) {
+			model.addObject("msg","Thank you for your response");
+			
+		}else {
+			model.addObject("msg","Something went wrong");
+		}
+		return model;
+	}
+	
 }
