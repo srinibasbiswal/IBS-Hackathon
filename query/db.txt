@@ -1,0 +1,5 @@
+Customer Table
+-----------------
+create table customer(username varchar2(30),name varchar2(30),password varchar2(30),adhar varchar2(10),email varchar2(30),phno varchar2(10),credit number(5));
+
+
