@@ -38,7 +38,8 @@ public class Dao implements Service{
 		hex.append(Integer.toHexString(0xFF & bb));
 		}
 		String password=hex.substring(0, 4).toString();
-		int result=jdbcTemplate.update("insert into customer values(?,?,?,?,?,?,?)",new Object[] {register.getUsername(),register.getName(),password,register.getAdhar(),register.getEmail(),register.getPh(),0});
+		System.out.println(password);
+		int result=jdbcTemplate.update("insert into customer values(?,?,?,?,?,?)",new Object[] {register.getUsername(),register.getName(),password,register.getAdhar(),register.getPh(),0});
 		if(result==1) {
 			transactionManager.commit(status);
 			return 1;
@@ -66,17 +67,19 @@ public class Dao implements Service{
 			hex.append(Integer.toHexString(0xFF & bb));
 			}
 			String password=hex.substring(0, 4).toString();
-			String id=jdbcTemplate.queryForObject("select username from customer where username=? and password=?",new Object[] {login.getUsername(),pass},String.class);
+			System.out.println(password);
+			String id=jdbcTemplate.queryForObject("select username from customer where username=? and password=?",new Object[] {login.getUsername(),password},String.class);
 			if(id!=null) {
 			return id;
 			}else {
 				return null;
 			}
 		}catch(Exception ee) {
-			ee.printStackTrace();
+			//ee.printStackTrace();
 			return null;
 		}
 	}
+	
 	
 
 }

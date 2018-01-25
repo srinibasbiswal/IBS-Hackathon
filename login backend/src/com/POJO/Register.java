@@ -5,7 +5,6 @@ public class Register {
 	private String name;
 	private String password;
 	private String Adhar;
-	private String email;
 	private String ph;
 	public String getUsername() {
 		return username;
@@ -30,12 +29,6 @@ public class Register {
 	}
 	public void setAdhar(String adhar) {
 		Adhar = adhar;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPh() {
 		return ph;

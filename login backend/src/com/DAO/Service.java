@@ -9,4 +9,8 @@ public interface Service {
 
 	String login(Login login);
 
+	String send(String id, String receiver, String pnr,String seat);
+
+	String accept(String id, String send, String pnr, String seat);
+
 }
