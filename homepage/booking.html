@@ -101,6 +101,57 @@
                                 <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
                             </div>
 
+                            <div>
+                                <button class="uk-button uk-button-default" type="button" id="btn1" onclick="javascript:showDiv();this.style.display = 'none'">Add Passenger</button>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="uk-card uk-card-default uk-margin-remove-top" id="form-2">
+                <div class="uk-card-body">
+                    <form>
+                        <fieldset class="uk-fieldset">
+
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                            </div>
+
+                            <div class="uk-margin">
+                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                            </div>
+
+                            <div class="uk-margin">
+                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                            </div>
+
+                            <div>
+                                <button class="uk-button uk-button-default" type="button" id="btn2" onclick="javascript:showDiv2();this.style.display = 'none'">Add Passenger</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="uk-card uk-card-default uk-margin-remove-top" id="form-3">
+                <div class="uk-card-body">
+                    <form>
+                        <fieldset class="uk-fieldset">
+
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                            </div>
+
+                            <div class="uk-margin">
+                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                            </div>
+
+                            <div class="uk-margin">
+                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                            </div>
+
                         </fieldset>
                     </form>
                 </div>
@@ -112,6 +163,21 @@
 
         </div>
     </div>
+
+    <script type="text/javascript">
+        function showDiv() {
+            div = document.getElementById('form-2');
+            div.style.display = "block";
+
+        }
+
+        function showDiv2() {
+            div = document.getElementById('form-3');
+            div.style.display = "block";
+        }
+    </script>
+
+
 
 
 

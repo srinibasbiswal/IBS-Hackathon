@@ -6,6 +6,7 @@ body {
     background-image: url(../img/train_bg.png);
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     min-height: 100vh;
 }
@@ -15,34 +16,43 @@ body {
 }
 
 div.seatCharts-cell {
-	color: #182C4E;
-	height: 25px;
-	width: 25px;
-	line-height: 25px;
-
+    color: #182C4E;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
 }
+
 div.seatCharts-seat {
-	color: #FFFFFF;
-	cursor: pointer;
+    color: #FFFFFF;
+    cursor: pointer;
 }
+
 div.seatCharts-row {
-	height: 35px;
+    height: 35px;
 }
+
 div.seatCharts-seat.available {
-	background-color: #B9DEA0;
-
+    background-color: #B9DEA0;
 }
+
 div.seatCharts-seat.available.first-class {
-/* 	background: url(vip.png); */
-	background-color: #3a78c3;
-}
-div.seatCharts-seat.focused {
-	background-color: #76B474;
-}
-div.seatCharts-seat.selected {
-	background-color: #E6CAC4;
-}
-div.seatCharts-seat.unavailable {
-	background-color: #472B34;
+    /* 	background: url(vip.png); */
+    background-color: #3a78c3;
 }
 
+div.seatCharts-seat.focused {
+    background-color: #76B474;
+}
+
+div.seatCharts-seat.selected {
+    background-color: #E6CAC4;
+}
+
+div.seatCharts-seat.unavailable {
+    background-color: #472B34;
+}
+
+#form-2,
+#form-3 {
+    display: none;
+}
