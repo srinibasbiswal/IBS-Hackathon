@@ -1,5 +1,6 @@
 div.seatCharts-container {
-	/*min-width: 700px;*/
+    margin: 0;
+    padding: 0;
 }
 div.seatCharts-cell {
 
