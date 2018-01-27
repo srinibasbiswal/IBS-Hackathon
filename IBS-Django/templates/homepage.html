@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>IRCTC v2.0</title>
+    <meta name="description" content="IBS hackathon Project 2018">
+
+    <link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon" />
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext'>
+    <link rel="stylesheet" href="{% static "css/style-login.css" %}" />
+</head>
+
+<body>
+
+    <div class="intro">
+
+        <h1>IRCTC v2.0</h1>
+        <h2>Next Gen Blockchain based eTicketing System</h2>
+    </div>
+
+    <div class="materialContainer">
+
+        <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+        <div class="box">
+
+            <div class="title">REGISTER</div>
+
+            <div class="input">
+                <label for="name">Name</label>
+                {{ form.name }}
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="aadhar">Aadhar</label>
+                {{ form.aadhar }}
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="username">Username</label>
+                {{ form.username }}
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="password">Password</label>
+                {{ form.password }}
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="phone">Phone Number</label>
+                {{ form.phone }}
+                <span class="spin"></span>
+            </div>
+
+            <div class="button login">
+                <button type="submit">
+                    <span>GO</span>
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+
+        </div>
+        </form>
+
+        <div class="overbox">
+            <div class="material-button alt-2">
+                <span class="shape"></span>
+            </div>
+
+            <div class="title">LOGIN</div>
+
+            <div class="input">
+                <label for="login_username">Username</label>
+                <input type="text" name="username" id="login_username">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="login_password">Password</label>
+                <input type="password" name="password" id="login_password">
+                <span class="spin"></span>
+            </div>
+
+            <div class="button">
+                <button>
+                    <span>NEXT</span>
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="{% static "js/index.js" %}"></script>
+
+</body>
+
+</html>

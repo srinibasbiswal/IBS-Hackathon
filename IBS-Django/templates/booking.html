@@ -1,0 +1,159 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="uk-position-relative">
+    <div class="uk-position-top">
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <a href="" class="uk-navbar-item uk-logo">IRCTC v2.0</a>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">
+                            <span class="uk-margin-small-right" uk-icon="icon: bell"></span>
+                            <span class="uk-badge">20</span>
+                        </a>
+                        <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-nav-header">Swap Requests</li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Komal has requested to swap the seat with B-68
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Swaraj has requested to swap the seat with B-69
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Vizal has requested to swap the seat with B-96
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Wallet Balance ₹4200</a>
+                    </li>
+                    <li class="uk-active">
+                        <a href="#">
+                            <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings</a>
+                                </li>
+                                <li class="uk-nav-divider"></li>
+                                <li>
+                                    <a href="#">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-card-body uk-align-center uk-width-1-2@m uk-margin-large-bottom">
+
+        <div class="uk-card-body uk-padding-small">
+            <h3 class="uk-card-title" align="center">Enter Passenger Details</h3>
+        </div>
+
+        <div class="uk-card uk-card-default uk-margin-small">
+            <div class="uk-card-body">
+                <form>
+                    <fieldset class="uk-fieldset">
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                        </div>
+
+                        <div>
+                            <button class="uk-button uk-button-default" type="button" id="btn1" onclick="showDiv('form-2');this.style.display = 'none'">Add Passenger</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="uk-card uk-card-default uk-margin-small" id="form-2">
+            <div class="uk-card-body">
+                <form>
+                    <fieldset class="uk-fieldset">
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                        </div>
+
+                        <div>
+                            <button class="uk-button uk-button-default" type="button" id="btn2" onclick="showDiv('form-3');this.style.display = 'none'">Add Passenger</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="uk-card uk-card-default uk-margin-small" id="form-3">
+            <div class="uk-card-body">
+                <form>
+                    <fieldset class="uk-fieldset">
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <button class="uk-button uk-button-primary uk-align-center">Book Tickets</button>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

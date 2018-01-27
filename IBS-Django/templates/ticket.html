@@ -1,0 +1,100 @@
+{% extends "base.html" %}{% block content %}
+
+<div class="uk-position-relative">
+    <div class="uk-position-top">
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <a href="" class="uk-navbar-item uk-logo">IRCTC v2.0</a>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">
+                            <span class="uk-margin-small-right" uk-icon="icon: bell"></span>
+                            <span class="uk-badge">20</span>
+                        </a>
+                        <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-nav-header">Swap Requests</li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Komal has requested to swap the seat with B-68
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Swaraj has requested to swap the seat with B-69
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Vizal has requested to swap the seat with B-96
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Wallet Balance ₹4200</a>
+                    </li>
+                    <li class="uk-active">
+                        <a href="#">
+                            <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings</a>
+                                </li>
+                                <li class="uk-nav-divider"></li>
+                                <li>
+                                    <a href="#">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-card-body uk-align-center uk-width-1-2@m uk-margin-large-bottom">
+        <div class="uk-card-body">
+            <h3 class="uk-card-title" align="center">Ticket Details for PNR 1000420</h3>
+        </div>
+        <div class="uk-card-body">
+            <div class="uk-grid uk-child-width-expand">
+                <div id="seat-map"></div>
+                <div>
+                    <button class="uk-button uk-button-primary uk-width-1-1">Swap Seats</button>
+                    <p>You can swap seats with other passengers by sending them a swap request.</p>
+                    <hr>
+                    <h4>Swap Requests:</h4>
+                    <span class="uk-badge">22</span> ⇋
+                    <span class="uk-badge">22</span>
+                    <p class="uk-text-medium uk-margin-small">Swap request from Swaraj Laha</p>
+                    <button class="uk-button uk-button-default uk-button-small">Accept</button>
+                    <button class="uk-button uk-button-default uk-button-small">Reject</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+{% endblock content %}

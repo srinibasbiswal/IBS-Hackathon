@@ -1,0 +1,132 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="uk-position-relative">
+    <div class="uk-position-top">
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <a href="" class="uk-navbar-item uk-logo">IRCTC v2.0</a>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">
+                            <span class="uk-margin-small-right" uk-icon="icon: bell"></span>
+                            <span class="uk-badge">20</span>
+                        </a>
+                        <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-nav-header">Swap Requests</li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Komal has requested to swap the seat with B-68
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Swaraj has requested to swap the seat with B-69
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
+                                            Vizal has requested to swap the seat with B-96
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Wallet Balance ₹4200</a>
+                    </li>
+                    <li class="uk-active">
+                        <a href="#">
+                            <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings</a>
+                                </li>
+                                <li class="uk-nav-divider"></li>
+                                <li>
+                                    <a href="#">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="uk-container">
+    <div class="uk-card uk-card-default uk-card-body uk-align-center uk-width-1-2@m uk-margin-large-bottom">
+        <div class="uk-card-body uk-padding-remove-bottom">
+            <div uk-grid>
+                <div class="uk-align-left">
+                    <p>From</p>
+                    <h2 class="uk-margin-small-top">Station 01</h2>
+                </div>
+                <div class="uk-align-right">
+                    <p>To</p>
+                    <h2 class="uk-margin-small-top">Station 02</h2>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body uk-padding-remove-top">
+            <div class="uk-card uk-card-default uk-margin-medium-top">
+                <div class="uk-card-body">
+                    <h3>Train name</h3>
+                    <p>Train number
+                        <br> Date: dd/mm/yyyy
+                        <br> Scheduled Arrival: hh:mm
+                        <br> Scheduled Departure: hh:mm
+                    </p>
+                    <h4>Price : ₹ 2500
+                        <button class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom">Book</button>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="uk-card uk-card-default uk-margin-medium-top">
+                <div class="uk-card-body">
+                    <h3>Train name</h3>
+                    <p>Train number
+                        <br> Date: dd/mm/yyyy
+                        <br> Scheduled Arrival: hh:mm
+                        <br> Scheduled Departure: hh:mm
+                    </p>
+                    <h4>Price : ₹ 2500
+                        <button class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom">Book</button>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="uk-card uk-card-default uk-margin-medium-top">
+                <div class="uk-card-body">
+                    <h3>Train name</h3>
+                    <p>Train number
+                        <br> Date: dd/mm/yyyy
+                        <br> Scheduled Arrival: hh:mm
+                        <br> Scheduled Departure: hh:mm
+                    </p>
+                    <h4>Price : ₹ 2500
+                        <button class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom">Book</button>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
