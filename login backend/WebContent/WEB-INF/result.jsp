@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IRCTC 2.0 |My Profile</title>
+    <title>IRCTC 2.0</title>
     <link rel="stylesheet" href="css/uikit.min.css" />
-    <link rel="stylesheet" href="css/jquery.seat-charts.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -55,7 +54,7 @@
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li>
-                                        <a href="#">My Tickets</a>
+                                        <a href="ticket.html">My Tickets</a>
                                     </li>
                                     <li>
                                         <a href="#">Profile</a>
@@ -77,61 +76,58 @@
     </div>
 
     <div class="uk-container">
-        <div uk-grid>
-            <div class="uk-card uk-card-default uk-card-body uk-align-left uk-width-1-4 uk-margin-large-bottom">
-                <div class="uk-card uk-card2 uk-card-default uk-card-title uk-margin-small">
-                    <div uk-grid>
-                        <div class="uk-width-1-3">
-                            <span uk-icon="icon: user;ratio: 2.5"></span>
-                        </div>
-                        <div class="uk-width-2-3">
-                            <p><strong>ABHIJIT PARIDA</strong><br>abhijitparida01</p>
-                        </div>
+        <div class="uk-card uk-card-default uk-card-body uk-align-center uk-width-1-2@m uk-margin-large-bottom">
+            <div class="uk-card-body uk-padding-remove-bottom">
+                <div uk-grid>
+                    <div class="uk-align-left">
+                        <p>From</p>
+                        <h2 class="uk-margin-small-top">Station 01</h2>
                     </div>
-                </div>
-
-                <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
-                    <ul class="uk-list uk-list-divider">
-                        <li>WALLET BALANCE :<strong>₹4200</strong></li>
-                        <li>USER NAME: abhijitparida01</li>
-                        <li>AADHAR CARD: 1541012143 </li>
-                        <li>PHONE NUMBER: 9776 242 2727</li>
-                        <li>EMAIL : abhijit.parida.me@gmail.com</li>
-                    </ul>
-
+                    <div class="uk-align-right">
+                        <p>To</p>
+                        <h2 class="uk-margin-small-top">Station 02</h2>
+                    </div>
                 </div>
             </div>
-
-            <div class="uk-card uk-card-default uk-card uk-align-right uk-width-2-3 uk-margin-large-bottom">
-
-                <div class="uk-title uk-margin-small">
-                    <h3>Ticket History</h3>
-                </div>
-
-
-                <div class="uk-card uk-card2 uk-card-default uk-card-body">
-                    <div class="uk-title">
+            <div class="uk-card-body uk-padding-remove-top">
+                <div class="uk-card uk-card-default uk-margin-medium-top">
+                    <div class="uk-card-body">
                         <h3>Train name</h3>
-                        <p><strong>Train Number<br>Station 01 - - > Station 02<br>PNR NUMBER </strong> </p>
+                        <p>Train number<br> Date: dd/mm/yyyy<br> Scheduled Arrival: hh:mm<br> Scheduled Departure: hh:mm
+                        </p>
+                        <h4>Price : ₹ 2500 <button class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom">Book</button> </h4>
                     </div>
                 </div>
 
-                <div class="uk-card uk-card2 uk-card-default uk-card-body">
-                    <div class="uk-title">
+                <div class="uk-card uk-card-default uk-margin-medium-top">
+                    <div class="uk-card-body">
                         <h3>Train name</h3>
-                        <p><strong>Train Number<br>Station 01 - - > Station 02<br>PNR NUMBER </strong> </p>
+                        <p>Train number<br> Date: dd/mm/yyyy<br> Scheduled Arrival: hh:mm<br> Scheduled Departure: hh:mm
+                        </p>
+                        <h4>Price : ₹ 2500 <button class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom">Book</button> </h4>
+                    </div>
+                </div>
+
+                <div class="uk-card uk-card-default uk-margin-medium-top">
+                    <div class="uk-card-body">
+                        <h3>Train name</h3>
+                        <p>Train number<br> Date: dd/mm/yyyy<br> Scheduled Arrival: hh:mm<br> Scheduled Departure: hh:mm
+                        </p>
+                        <h4>Price : ₹ 2500 <button class="uk-button uk-button-primary uk-align-right uk-margin-remove-bottom">Book</button> </h4>
                     </div>
                 </div>
 
             </div>
+
+
         </div>
+
     </div>
 
 
 
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
-
 
 </body>
 
