@@ -1,6 +1,7 @@
 package com.DAO;
 
 import java.security.MessageDigest;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -77,6 +79,7 @@ public class Dao implements Service{
 			System.out.println(password);
 			String id=jdbcTemplate.queryForObject("select username from customer where username=? and password=?",new Object[] {login.getUsername(),password},String.class);
 			if(id!=null) {
+				
 			return id;
 			}else {
 				return null;
@@ -212,7 +215,35 @@ public class Dao implements Service{
 }
 	@Override
 	public List<String> book(List<String> l, ArrayList<Book> b) {
-		// TODO Auto-generated method stub
+		try {
+			List<String> ret=new ArrayList<String>();
+			String pnr=Integer.toString(l.hashCode());
+			String train=l.get(0);
+			String jdate=l.get(4);
+			String id=l.get(5);
+			int last=jdbcTemplate.queryForInt("select seat from train where train_no=?",new Object[] {Integer.parseInt(train)});
+			int people=b.size()-1;
+			ret.add(Integer.toString(last));
+			if((last+people)>40) {
+				return null;
+			}else {
+		String sql ="insert into seat_chart values(?,?,?,?,?,?,?)";
+		
+					for(Book bb:b) {
+						int ii=jdbcTemplate.update(sql,new Object[] {pnr,id,train,bb.getN1(),bb.getA1(),jdate,last});
+						last++;
+						
+					}
+			  int i=jdbcTemplate.update("update train set next=? where train_no=?",new Object[] {last,train});
+			  ret.add(Integer.toString(--last));
+			  return ret;
+		
+		
+	
+	}
+			}catch(Exception ee) {
+		ee.printStackTrace();
 		return null;
 	}
+}
 }

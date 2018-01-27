@@ -138,6 +138,7 @@ public class Control {
 		l.add(from);
 		l.add(price);
 		l.add(date);
+		l.add(id);
 		ArrayList<Book> b=new ArrayList<Book>();
 		
 		if(n1!=null && g1!=null && a1!=null) {
@@ -150,11 +151,42 @@ public class Control {
 			String g2=book.get("g2");
 			String a2=book.get("a2");
 			if(n2!=null && g2!=null && a2!=null) {
+				String n3=book.get("n3");
+				String g3=book.get("g3");
+				String a3=book.get("a3");
+				Book b3=new Book();
+				b3.setA1(a2);
+				b3.setG1(g2);
+				b3.setN1(n2);
+				b.add(b3);
+				if(n3!=null && g3!=null && a3!=null) {
+					Book b4=new Book();
+					b4.setA1(a2);
+					b4.setG1(g2);
+					b4.setN1(n2);
+					b.add(b4);
+					List<String> ll=service.book(l,b);
+					l.add(ll.get(0));
+					l.add(ll.get(1));
+					model.addObject("invoice",l);
+				}else {
+					List<String> ll=service.book(l,b);
+					l.add(ll.get(0));
+					l.add(ll.get(1));
+					model.addObject("invoice",l);
+				}
 				
 			}else {
 				List<String> ll=service.book(l,b);
+				l.add(ll.get(0));
+				l.add(ll.get(1));
+				model.addObject("invoice",l);
+
 			}
+		}else {
+			
 		}
+		return model;
 	}
 	@RequestMapping(value="/findTrain",method=RequestMethod.POST)
 	public ModelAndView findTrain(@RequestParam  Map<String,String> train,HttpSession session) {
