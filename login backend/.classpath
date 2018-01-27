@@ -31,5 +31,6 @@
 	<classpathentry kind="lib" path="C:/Users/sidha/Desktop/spring1/spring jars/springjars/web/org.springframework.web-3.0.1.RELEASE-A.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.0/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sidha/Desktop/spring1/spring jars/jstl.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

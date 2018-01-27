@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IRCTC 2.0</title>
     <link rel="stylesheet" href="css/uikit.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <style><%@include file="/WEB-INF/css/style.css"%></style>
 </head>
 
 <body>

@@ -1,17 +1,24 @@
 package com.DAO;
 
 import java.security.MessageDigest;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import com.POJO.Book;
 import com.POJO.Login;
 import com.POJO.Register;
 
@@ -79,7 +86,133 @@ public class Dao implements Service{
 			return null;
 		}
 	}
+	@Override
+	public String send(String id, String rseat, String pnr, String seat,String jdate) {
+		try {
+			String sql="select pnr,user_id,train_no from seat_chart where seat_no='"+rseat+"'  and jdate='"+jdate+"'";
+			List<String> l=jdbcTemplate.query(sql,new ResultSetExtractor<List<String>>(){  
+    @Override  
+     public List extractData(ResultSet rs) throws SQLException,  
+            DataAccessException { 
+    	ArrayList<String> l=new ArrayList<String>();
+    		if(rs.next()) {
+    				String rpnr=rs.getString(1);
+    				l.add(rpnr);
+    				String rid=rs.getString(2);
+    				l.add(rid);
+    				String jdate1=rs.getString(3);
+    				l.add(jdate1);
+    		}
+    		return l;
+    				
+    		
+        }  
+    });
+			String rpnr=l.get(1);
+			String rid=l.get(2);
+			String jdate1=l.get(3);
+			
+			int i=jdbcTemplate.update("insert into notification values(?,?,?,?,?,?,?)",new Object[] {id,rid,pnr,rpnr,Integer.parseInt(seat),Integer.parseInt(rseat),0});
+			if(i==1) {
+				return "sent";
+			}else {
+				return null;
+			}
+		}catch(Exception ee) {
+		ee.printStackTrace();
+		return null;
+		}
+	}
 	
+	
+	public String accept(String id, String send, String pnr,String rpnr,String rseat, String seat) {
+		try {
+			 int i=jdbcTemplate.update("update seat_chart set seat=? where seat=? and pnr=?",new Object[] {Integer.parseInt(rseat),Integer.parseInt(seat),pnr});
+			 if(i==1) {
+				 int j=jdbcTemplate.update("update seat_chart set seat=? where pnr=? and seat=?", new Object[] {Integer.parseInt(seat),rpnr,Integer.parseInt(rseat)});
+				 	if(j==1) {
+				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {id,send});
+				 		return "accepted";
+				 }else {
+					 return null;
+				 }
+			 }else {
+					return null; 
+			 }
+					
+		}catch(Exception ee) {
+			ee.printStackTrace();
+					return null;
+		}
+	}
 	
 
+	@Override
+	public List<String> viewNotification(String id,String sid) {
+		try {
+			String sql="select * from notification where sender_id='"+sid+"' and rec_id='"+id+"'" ;
+			List<String> l=jdbcTemplate.query(sql,new ResultSetExtractor<List<String>>(){  
+    @Override  
+     public List<String> extractData(ResultSet rs) throws SQLException,  
+            DataAccessException { 
+    	ArrayList<String> l=new ArrayList<String>();
+    		if(rs.next()) {
+    				l.add(id);
+    				l.add(sid);
+    				l.add(rs.getString(3));
+    				l.add(rs.getString(4));
+    				l.add(Integer.toString(rs.getInt(5)));
+    				l.add(Integer.toString(rs.getInt(6)));
+    				l.add(Integer.toString(rs.getInt(7)));
+    				}
+    			return l;
+        }
+			});
+				return l;
+	}catch(Exception ee) {
+		ee.printStackTrace();
+		return null;
+	}
+}
+	@Override
+	public String reject(String id, String send, String pnr, String rpnr, String rseat, String seat) {
+		try {
+			int i=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {id,send});
+			return "reject";
+		}catch(Exception ee) {
+		return null;
+		}
+	}
+	@Override
+	public List<String> getTrain(String from, String to) {
+		
+		try {
+			String sql="select * from train where from_st='"+from+"' and to_st='"+to+"'" ;
+			List<String> l=jdbcTemplate.query(sql,new ResultSetExtractor<List<String>>(){  
+    @Override  
+     public List<String> extractData(ResultSet rs) throws SQLException,  
+            DataAccessException { 
+    	ArrayList<String> l=new ArrayList<String>();
+    		if(rs.next()) {
+    			l.add(rs.getString(1));
+    			l.add(rs.getString(2));
+    			l.add(rs.getString(3));
+    			l.add(rs.getString(4));
+    			l.add(Integer.toString(rs.getInt(5)));
+    			
+    		}
+    		return l;
+	}});
+    return l;
+    		
+	}catch(Exception ee) {
+		ee.printStackTrace();
+		return null;
+	}
+}
+	@Override
+	public List<String> book(List<String> l, ArrayList<Book> b) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
