@@ -36,7 +36,7 @@ public class Control {
 
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView validate(@ModelAttribute("login")Login login,HttpServletRequest request) {
-		String result=(String)service.login(login);
+		List<String> result=service.login(login);
 		ModelAndView model;
 		if(result==null) {
 			model=new ModelAndView("Welcome");
@@ -44,7 +44,8 @@ public class Control {
 		
 		}else {
 			model=new ModelAndView("Profile");
-			request.getSession().setAttribute("id", result);
+			request.getSession().setAttribute("id", result.get(0));
+			model.addObject("notification",result);
 			
 		}
 		
@@ -214,7 +215,7 @@ public class Control {
 		
 		return model;
 	}
-	@RequestMapping(value="/notificattion",method=RequestMethod.POST)
+	@RequestMapping(value="/notification",method=RequestMethod.POST)
 	public ModelAndView getNotification(@RequestParam  Map<String,String> not,HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		session.setAttribute("id",id);

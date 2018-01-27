@@ -63,7 +63,8 @@ public class Dao implements Service{
 		}
 	}
 	@Override
-	public String login(Login login) {
+	public List<String> login(Login login) {
+		List<String> l=new ArrayList();
 		try {
 			String pass=login.getPassword();
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -79,14 +80,26 @@ public class Dao implements Service{
 			System.out.println(password);
 			String id=jdbcTemplate.queryForObject("select username from customer where username=? and password=?",new Object[] {login.getUsername(),password},String.class);
 			if(id!=null) {
-				
-			return id;
+				l.add(id);
+				String sql="select sender_id from notification where rec_id='"+id+"'";
+				List<String> ll=jdbcTemplate.query(sql,new ResultSetExtractor<List<String>>(){  
+				    @Override  
+				     public List<String> extractData(ResultSet rs) throws SQLException,  
+				            DataAccessException { 
+				    	ArrayList<String> l=new ArrayList<String>();
+				    	l.add(id);
+				    		if(rs.next()) {
+				    			l.add(rs.getString(1));
+				    		}
+				    		return l;
+					}});
+				return ll;
 			}else {
 				return null;
 			}
 		}catch(Exception ee) {
 			//ee.printStackTrace();
-			return null;
+			return l;
 		}
 	}
 	@Override

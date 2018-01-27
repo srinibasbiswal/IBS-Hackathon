@@ -11,7 +11,7 @@ public interface Service {
 
 	int register(Register register);
 
-	String login(Login login);
+	List<String> login(Login login);
 
 	String send(String id, String rseat, String pnr,String seat,String jdate);
 
