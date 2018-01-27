@@ -102,7 +102,7 @@
                             </div>
 
                             <div>
-                                <button class="uk-button uk-button-default" type="button" id="btn1" onclick="javascript:showDiv();this.style.display = 'none'">Add Passenger</button>
+                                <button class="uk-button uk-button-default" type="button" id="btn1" onclick="javascript:showDiv('form-2');this.style.display = 'none'">Add Passenger</button>
                             </div>
 
                         </fieldset>
@@ -128,7 +128,7 @@
                             </div>
 
                             <div>
-                                <button class="uk-button uk-button-default" type="button" id="btn2" onclick="javascript:showDiv2();this.style.display = 'none'">Add Passenger</button>
+                                <button class="uk-button uk-button-default" type="button" id="btn2" onclick="javascript:showDiv('form-3');this.style.display = 'none'">Add Passenger</button>
                             </div>
                         </fieldset>
                     </form>
@@ -165,15 +165,10 @@
     </div>
 
     <script type="text/javascript">
-        function showDiv() {
-            div = document.getElementById('form-2');
+        function showDiv(formid) {
+            div = document.getElementById(formid);
             div.style.display = "block";
 
-        }
-
-        function showDiv2() {
-            div = document.getElementById('form-3');
-            div.style.display = "block";
         }
     </script>
 
