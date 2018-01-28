@@ -238,18 +238,18 @@ public class Dao implements Service{
 	public List<String> book(List<String> l, ArrayList<Book> b) {
 		try {
 			List<String> ret=new ArrayList<String>();
-			String pnr=Integer.toString(l.hashCode());
+			String pnr=Integer.toString(Math.abs(l.hashCode()));
 			String train=l.get(0);
 			String jdate=l.get(4);
 			String id=l.get(5);
-			int last=jdbcTemplate.queryForObject("select seat from train where train_no=?",new Object[] {train},Integer.class);
+			int last=jdbcTemplate.queryForObject("select next from train where train_no=?",new Object[] {train},Integer.class);
 			int people=b.size()-1;
 			ret.add(Integer.toString(last));
 			if((last+people)>40) {
 				return null;
 			}else {
 		String sql ="insert into seat_chart values(?,?,?,?,?,?,?)";
-		
+					System.out.println(b.size());
 					for(Book bb:b) {
 						int ii=jdbcTemplate.update(sql,new Object[] {pnr,id,train,bb.getN1(),bb.getA1(),jdate,last});
 						last++;
@@ -257,6 +257,7 @@ public class Dao implements Service{
 					}
 			  int i=jdbcTemplate.update("update train set next=? where train_no=?",new Object[] {last,train});
 			  ret.add(Integer.toString(--last));
+			  ret.add(pnr);
 			  return ret;
 		
 		

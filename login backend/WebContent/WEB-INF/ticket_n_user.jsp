@@ -1,7 +1,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1" import="java.util.*"%>
+<% String id=(String)session.getAttribute("id"); 
+	ArrayList<String> al=new ArrayList<String>();
+	al=(ArrayList<String>)request.getAttribute("invoice");
+	int size=al.size();
+	
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +63,7 @@
                         <li><a href="#">Wallet Balance ₹4200</a></li>
                         <li class="uk-active">
                             <a href="#">
-                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> <%=id%></a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li>
@@ -84,7 +91,7 @@
     <div class="uk-container">
         <div class="uk-card uk-card-default uk-card-body uk-align-center uk-width-1-2@m uk-margin-large-bottom">
             <div class="uk-card-body">
-                <h3 class="uk-card-title" align="center">Ticket Details for PNR 1000420</h3>
+                <h3 class="uk-card-title" align="center">Ticket Details for PNR <%=al.get(size-1) %></h3>
             </div>
             <div class="uk-card-body">
                 <div class="uk-grid uk-child-width-expand">

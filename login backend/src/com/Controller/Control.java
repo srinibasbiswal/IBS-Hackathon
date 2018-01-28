@@ -33,7 +33,19 @@ public class Control {
 	@Autowired
 	Service service;
 
-
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView model=new ModelAndView("Welcome");
+		session.invalidate();
+		return model;
+	}
+	@RequestMapping("/profile")
+	public ModelAndView profile(HttpSession session) {
+		ModelAndView model=new ModelAndView("Profile");
+		String id=(String) session.getAttribute("id");
+		session.setAttribute("id",id);
+		return model;
+	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView validate(@ModelAttribute("login")Login login,HttpServletRequest request) {
 		List<String> result=service.login(login);
@@ -69,7 +81,7 @@ public class Control {
 	public ModelAndView sendRequest(@RequestParam  Map<String,String> req,HttpSession session) {
 		String id=(String) session.getAttribute("id");
 		session.setAttribute("id",id);
-		ModelAndView model=new ModelAndView("page name");
+		ModelAndView model=new ModelAndView("search");
 		String rseat=req.get("rseat");
 		String pnr=req.get("pnr");
 		String seat=req.get("seat");
@@ -132,10 +144,13 @@ public class Control {
 	public ModelAndView booking(@RequestParam  Map<String,String> book,HttpSession session) {
 		String id=(String) session.getAttribute("id");
 		session.setAttribute("id",id);
-		ModelAndView model=new ModelAndView("page name");
+		ModelAndView model=new ModelAndView("ticket_n_user");
 		String n1=book.get("n1");
 		String g1=book.get("g1");
 		String a1=book.get("a1");
+		System.out.println(n1);
+		System.out.println(g1);
+		System.out.println(a1);
 		String num=book.get("number");
 		String to=book.get("to");
 		String from=book.get("from");
@@ -159,10 +174,16 @@ public class Control {
 			String n2=book.get("n2");
 			String g2=book.get("g2");
 			String a2=book.get("a2");
+			System.out.println(n2);
+			System.out.println(g2);
+			System.out.print(a2);
 			if(n2!=null && g2!=null && a2!=null) {
 				String n3=book.get("n3");
 				String g3=book.get("g3");
 				String a3=book.get("a3");
+				System.out.println(n3);
+				System.out.println(g3);
+				System.out.print(a3);
 				Book b3=new Book();
 				b3.setA1(a2);
 				b3.setG1(g2);
@@ -182,6 +203,7 @@ public class Control {
 					List<String> ll=service.book(l,b);
 					l.add(ll.get(0));
 					l.add(ll.get(1));
+					l.add(ll.get(2));
 					model.addObject("invoice",l);
 				}
 				

@@ -55,7 +55,7 @@
                         <li><a href="#">Wallet Balance ₹4200</a></li>
                         <li class="uk-active">
                             <a href="#">
-                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> <%=(String)session.getAttribute("id") %></a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li>
@@ -69,7 +69,7 @@
                                     </li>
                                     <li class="uk-nav-divider"></li>
                                     <li>
-                                        <a href="#">Logout</a>
+                                        <a href="logout">Logout</a>
                                     </li>
                                 </ul>
                             </div>

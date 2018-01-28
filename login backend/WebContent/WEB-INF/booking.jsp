@@ -98,7 +98,7 @@ String jdate=l.get(4);
 
                         <div class="uk-card uk-card-default uk-margin-small">
                             <div class="uk-card-body">
-                                <form>
+                                <form action="book" method="post">
                                     <fieldset class="uk-fieldset">
                                         <input type="hidden" name="number" value=<%=train_no%> >
                                         <input type="hidden" name="to" value=<%=to%> >
@@ -128,7 +128,7 @@ String jdate=l.get(4);
 
                         <div class="uk-card uk-card-default uk-margin-small" id="form-2">
                             <div class="uk-card-body">
-                                <form>
+                                
                                     <fieldset class="uk-fieldset">
 
                                         <div class="uk-margin">
@@ -147,7 +147,7 @@ String jdate=l.get(4);
                                             <button class="uk-button uk-button-default" type="button" id="btn2" onclick="showDiv('form-3');this.style.display = 'none'">Add Passenger</button>
                                         </div>
                                     </fieldset>
-
+								
                             </div>
                         </div>
 
@@ -169,7 +169,7 @@ String jdate=l.get(4);
                                     </div>
 
                                 </fieldset>
-                                </form>
+                                
                             </div>
                         </div>
 
@@ -178,7 +178,7 @@ String jdate=l.get(4);
                             <button class="uk-button uk-button-primary uk-align-center uk-margin-remove-top">Book Tickets</button>
 
                         </div>
-
+					</form>
                     </div>
                 </div>
                 <spring:url value="/resources/js/script.js" var="JS" />
