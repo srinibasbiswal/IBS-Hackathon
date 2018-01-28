@@ -3,12 +3,12 @@ $(document).ready(function() {
     var firstSeatLabel = 1;
     var sc = $('#seat-map').seatCharts({
         map: [
+            'ccc_c',
+            'ccc_b',
+            'baa_a',
             'aaa_a',
             'aaa_a',
             'aaa_a',
-            'aaa_a',
-            'cca_c',
-            'cca_c',
             'aaa_a',
             'aaa_a',
             'aaa_a',
@@ -33,12 +33,16 @@ $(document).ready(function() {
             } else {
                 return this.style();
             }
+        },
+        seats: {
+            b: {
+                classes : 'first-class'
+            }
         }
     });
 
     //Make all available 'c' seats unavailable
     sc.find('c.available').status('unavailable');
-
 });
 
 
