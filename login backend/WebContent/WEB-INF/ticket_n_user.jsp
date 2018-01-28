@@ -3,11 +3,11 @@
 <html lang="en">
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1" import="java.util.*"%>
-<% String id=(String)session.getAttribute("id"); 
+<% String id=(String)session.getAttribute("id");
 	ArrayList<String> al=new ArrayList<String>();
 	al=(ArrayList<String>)request.getAttribute("invoice");
 	int size=al.size();
-	
+
 %>
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@ pageEncoding="ISO-8859-1" import="java.util.*"%>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IRCTC 2.0 | Ticket Details</title>
     <spring:url value="/resources/css/jquery.seat-charts.css" var="stylish2" />
-    
+
     <spring:url value="/resources/css/style2.css" var="stylish" />
      <spring:url value="/resources/css/uikit.min.css" var="stylish1" />
     <link rel="stylesheet" href="${stylish}" />
@@ -115,14 +115,62 @@ pageEncoding="ISO-8859-1" import="java.util.*"%>
 	<script src="${JS}"></script>
     <script src="${JS1}"></script>
      <spring:url value="/resources/js/jquery-1.11.0.min.js" var="JS2" />
-    
+
      <spring:url value="/resources/js/jquery.seat-charts.min.js" var="JS3" />
      <spring:url value="/resources/js/script.js" var="JS4" />
          <script src="${JS2}"></script>
-     
+
          <script src="${JS3}"></script>
-     
+
          <script src="${JS4}"></script>
+
+         <script type="text/javascript">
+    $(document).ready(function() {
+
+    var firstSeatLabel = 1;
+    var sc = $('#seat-map').seatCharts({
+        map: [
+            'ccc_c',
+            'ccc_b',
+            'baa_a',
+            'aaa_a',
+            'aaa_a',
+            'aaa_a',
+            'aaa_a',
+            'aaa_a',
+            'aaa_a',
+            'aaa_a'
+        ],
+        naming: {
+            top: false,
+            getLabel: function(character, row, column) {
+                return firstSeatLabel++;
+            }
+        },
+        click: function() {
+            if (this.status() == 'available') {
+                //do some stuff, i.e. add to the cart
+                return 'selected';
+            } else if (this.status() == 'selected') {
+                //seat has been vacated
+                return 'available';
+            } else if (this.status() == 'unavailable') {
+                //seat has been already booked
+                return 'unavailable';
+            } else {
+                return this.style();
+            }
+        },
+        seats: {
+            b: {
+                classes : 'first-class'
+            }
+        }
+    });
+
+    //Make all available 'c' seats unavailable
+    sc.find('c.available').status('unavailable');
+});</script>
 
 </body>
 
