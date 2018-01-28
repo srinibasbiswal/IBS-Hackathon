@@ -140,14 +140,22 @@ public class Dao implements Service{
 		}
 	}
 	
-	
+	@Override
 	public String accept(String id, String send, String pnr,String rpnr,String rseat, String seat) {
 		try {
-			 int i=jdbcTemplate.update("update seat_chart set seat=? where seat=? and pnr=?",new Object[] {Integer.parseInt(rseat),Integer.parseInt(seat),pnr});
+			 System.out.println(rseat);
+			 System.out.println(seat);
+			 System.out.println(pnr);
+			 int s=Integer.parseInt(rseat);
+			 int s2=Integer.parseInt(seat);
+			 int i=jdbcTemplate.update("update seat_chart set seat="+s+" where seat= "+s2+" and pnr= '"+pnr+"'");
+			 System.out.println(i);
 			 if(i==1) {
 				 int j=jdbcTemplate.update("update seat_chart set seat=? where pnr=? and seat=?", new Object[] {Integer.parseInt(seat),rpnr,Integer.parseInt(rseat)});
-				 	if(j==1) {
-				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {id,send});
+				 System.out.println(j);
+				 if(j==1) {
+				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {send,id});
+				 		System.out.println(k);
 				 		return "accepted";
 				 }else {
 					 return null;
@@ -230,18 +238,18 @@ public class Dao implements Service{
 	public List<String> book(List<String> l, ArrayList<Book> b) {
 		try {
 			List<String> ret=new ArrayList<String>();
-			String pnr=Integer.toString(l.hashCode());
+			String pnr=Integer.toString(Math.abs(l.hashCode()));
 			String train=l.get(0);
 			String jdate=l.get(4);
 			String id=l.get(5);
-			int last=jdbcTemplate.queryForInt("select seat from train where train_no=?",new Object[] {Integer.parseInt(train)});
+			int last=jdbcTemplate.queryForObject("select next from train where train_no=?",new Object[] {train},Integer.class);
 			int people=b.size()-1;
 			ret.add(Integer.toString(last));
 			if((last+people)>40) {
 				return null;
 			}else {
 		String sql ="insert into seat_chart values(?,?,?,?,?,?,?)";
-		
+					System.out.println(b.size());
 					for(Book bb:b) {
 						int ii=jdbcTemplate.update(sql,new Object[] {pnr,id,train,bb.getN1(),bb.getA1(),jdate,last});
 						last++;
@@ -249,6 +257,7 @@ public class Dao implements Service{
 					}
 			  int i=jdbcTemplate.update("update train set next=? where train_no=?",new Object[] {last,train});
 			  ret.add(Integer.toString(--last));
+			  ret.add(pnr);
 			  return ret;
 		
 		

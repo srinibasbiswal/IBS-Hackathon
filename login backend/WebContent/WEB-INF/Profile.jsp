@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IRCTC 2.0 |My Profile</title>
-    <link rel="stylesheet" href="css/uikit.min.css" />
-    <link rel="stylesheet" href="css/jquery.seat-charts.css" />
-    <link rel="stylesheet" href="css/style.css" />
-</head>
+    <spring:url value="/resources/css/style2.css" var="stylish" />
+     <spring:url value="/resources/css/uikit.min.css" var="stylish1" />
+    <link rel="stylesheet" href="${stylish}" />
+    <link rel="stylesheet" href="${stylish1}" />
+         <spring:url value="/resources/css/jquery.seat-charts.css" var="stylish2" />
+    
+<link rel="stylesheet" href="${stylish2}" /></head>
 
 <body>
 
@@ -51,7 +55,7 @@
                         <li><a href="#">Wallet Balance ₹4200</a></li>
                         <li class="uk-active">
                             <a href="#">
-                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> <%=(String)session.getAttribute("id") %></a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li>
@@ -65,7 +69,7 @@
                                     </li>
                                     <li class="uk-nav-divider"></li>
                                     <li>
-                                        <a href="#">Logout</a>
+                                        <a href="logout">Logout</a>
                                     </li>
                                 </ul>
                             </div>
@@ -126,13 +130,10 @@
             </div>
         </div>
     </div>
-
-
-
-    <script src="js/uikit.min.js"></script>
-    <script src="js/uikit-icons.min.js"></script>
-
-
+	<spring:url value="/resources/js/uikit.min.js" var="JS" />
+<spring:url value="/resources/js/uikit-icons.min.js" var="JS1" />
+	<script src="${JS}"></script>
+    <script src="${JS1}"></script>
 </body>
 
 </html>

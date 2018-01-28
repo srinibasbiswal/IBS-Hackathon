@@ -1,14 +1,32 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
+<%
+String id=(String)session.getAttribute("id");
+ArrayList<String> l=(ArrayList<String>)request.getAttribute("notification");
+String sid=l.get(1);
+String spnr=l.get(3);
+String rpnr=l.get(2);
+String sseat=l.get(4);
+String rseat=l.get(5);
+%>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IRCTC 2.0 | Ticket Details</title>
-    <link rel="stylesheet" href="css/uikit.min.css" />
-    <link rel="stylesheet" href="css/jquery.seat-charts.css" />
-    <link rel="stylesheet" href="css/style.css" />
+  
+        <spring:url value="/resources/css/jquery.seat-charts.css" var="stylish2" />
+    
+    <spring:url value="/resources/css/style2.css" var="stylish" />
+     <spring:url value="/resources/css/uikit.min.css" var="stylish1" />
+    <link rel="stylesheet" href="${stylish}" />
+    <link rel="stylesheet" href="${stylish1}" />
+        <link rel="stylesheet" href="${stylish2}" />
+    
 </head>
 
 <body>
@@ -32,26 +50,19 @@
                                     <li>
                                         <a href="#">
                                             <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
-                                                <span class="uk-badge">22</span> ⇋ <span class="uk-badge">40</span>
-                                                <p class="uk-text-medium uk-margin-small">Swap request from Swaraj Laha</p>
+                                                <span class="uk-badge"><%=sseat%></span> ⇋ <span class="uk-badge"><%=rseat %></span>
+                                                <p class="uk-text-medium uk-margin-small">Swap request from <%=sid%></p>
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="uk-card uk-card-default uk-card-body uk-margin-remove-top">
-                                                <span class="uk-badge">24</span> ⇋ <span class="uk-badge">36</span>
-                                                <p class="uk-text-medium uk-margin-small">Swap request from Swaraj Laha</p>
-                                            </div>
-                                        </a>
-                                    </li>
+                               
                                 </ul>
                             </div>
                         </li>
                         <li><a href="#">Wallet Balance ₹4200</a></li>
                         <li class="uk-active">
                             <a href="#">
-                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> abhijitparida01</a>
+                                <span class="uk-margin-small-right" uk-icon="icon: user"></span> <%=id %></a>
                             <div class="uk-navbar-dropdown">
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li>
@@ -87,16 +98,17 @@
                     <div>
                         <h4>Swap Requests:</h4>
                         <div class="uk-margin-medium-bottom">
-                            <span class="uk-badge">22</span> ⇋ <span class="uk-badge">40</span>
-                            <p class="uk-text-medium uk-margin-small">Swap request from Swaraj Laha</p>
+                        <form action="accept" method="post">
+                        <input type="hidden" name="sender" value=<%=sid%> >
+                        <input type="hidden" name="pnr" value=<%=spnr%> >
+                        <input type="hidden" name="seat" value=<%=rseat%> >
+                        <input type="hidden" name="rpnr" value=<%=rpnr%> >
+                        <input type="hidden" name="rseat" value=<%=sseat%> >
+                            <span class="uk-badge"><%=rseat%></span> ⇋ <span class="uk-badge"><%=sseat %></span>
+                            <p class="uk-text-medium uk-margin-small">Swap request from <%=sid%></p>
                             <button class="uk-button uk-button-secondary uk-button-small">Accept</button>
                             <button class="uk-button uk-button-default uk-button-small">Reject</button>
-                        </div>
-                        <div class="uk-margin-medium-bottom">
-                            <span class="uk-badge">24</span> ⇋ <span class="uk-badge">36</span>
-                            <p class="uk-text-medium uk-margin-small">Swap request from Swaraj Laha</p>
-                            <button class="uk-button uk-button-secondary uk-button-small">Accept</button>
-                            <button class="uk-button uk-button-default uk-button-small">Reject</button>
+                        	</form>
                         </div>
                     </div>
                 </div>
@@ -109,12 +121,22 @@
 
 
 
-    <script src="js/uikit.min.js"></script>
-    <script src="js/uikit-icons.min.js"></script>
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery.seat-charts.min.js"></script>
-    <script src="js/script.js"></script>
-
+    
+ <spring:url value="/resources/js/uikit.min.js" var="JS" />
+<spring:url value="/resources/js/uikit-icons.min.js" var="JS1" />
+	<script src="${JS}"></script>
+    <script src="${JS1}"></script>
+     <spring:url value="/resources/js/jquery-1.11.0.min.js" var="JS2" />
+    
+     <spring:url value="/resources/js/jquery.seat-charts.min.js" var="JS3" />
+     <spring:url value="/resources/js/script.js" var="JS4" />
+         <script src="${JS2}"></script>
+     
+         <script src="${JS3}"></script>
+     
+         <script src="${JS4}"></script>
+     
+    
 </body>
 
 </html>

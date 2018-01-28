@@ -37,7 +37,7 @@
 
 
         <div class="box">
-
+			<form action="register" method="post">
             <div class="title">REGISTER</div>
 
             <div class="input">
@@ -48,7 +48,7 @@
 
             <div class="input">
                 <label for="aadhar">Aadhar</label>
-                <input type="number" name="aadhar" id="aadhar">
+                <input type="number" name="adhar" id="aadhar">
                 <span class="spin"></span>
             </div>
 
@@ -66,13 +66,14 @@
 
             <div class="input">
                 <label for="phone">Phone Number</label>
-                <input type="number" name="phone" id="phone">
+                <input type="number" name="ph" id="phone">
                 <span class="spin"></span>
             </div>
 
             <div class="button login">
                 <button><span>GO</span> <i class="fa fa-check"></i></button>
             </div>
+            </form>
 
             <a href="" class="pass-forgot">Forgot your password?</a>
 
@@ -80,7 +81,7 @@
 
         <div class="overbox">
             <div class="material-button alt-2"><span class="shape"></span></div>
-
+			<form action="login" method="post">
             <div class="title">LOGIN</div>
 
             <div class="input">
@@ -99,7 +100,7 @@
                 <button><span>NEXT</span></button>
             </div>
 
-
+</form>
         </div>
 
     </div>
