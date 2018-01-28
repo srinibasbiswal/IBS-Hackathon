@@ -43,7 +43,7 @@ public class Control {
 		model.addObject("msg","Invalid User Id or Password");
 		
 		}else {
-			model=new ModelAndView("Profile");
+			model=new ModelAndView("search");
 			request.getSession().setAttribute("id", result.get(0));
 			model.addObject("notification",result);
 			
@@ -84,15 +84,22 @@ public class Control {
 	}
 	@RequestMapping(value="/accept",method=RequestMethod.POST)
 	public ModelAndView accept(@RequestParam  Map<String,String> acc,HttpSession session) {
-		ModelAndView model=new ModelAndView("page name");
+		ModelAndView model=new ModelAndView("booking");
 		String id=(String) session.getAttribute("id");
 		session.setAttribute("id",id);
+		System.out.println(1);
 		String send=acc.get("sender");
+		System.out.println(send);
 		String pnr=acc.get("pnr");
+		System.out.println(pnr);
 		String seat=acc.get("seat");
+		System.out.println(seat);
 		String rpnr=acc.get("rpnr");
+		System.out.println(rpnr);
 		String rseat=acc.get("rseat");
+		System.out.println(rseat);
 		String result=service.accept(id,send,pnr,rpnr,rseat, seat);
+		System.out.println(result);
 		if(result.equalsIgnoreCase("accepted")) {
 			model.addObject("msg","Thank you for your response");
 			
@@ -191,7 +198,8 @@ public class Control {
 	}
 	@RequestMapping(value="/findTrain",method=RequestMethod.POST)
 	public ModelAndView findTrain(@RequestParam  Map<String,String> train,HttpSession session) {
-		ModelAndView model=new ModelAndView("page name");
+		ModelAndView model=new ModelAndView("result");
+		System.out.println("Comming");
 		String id=(String) session.getAttribute("id");
 		session.setAttribute("id",id);
 		String from=train.get("from");
@@ -215,12 +223,14 @@ public class Control {
 		
 		return model;
 	}
-	@RequestMapping(value="/notification",method=RequestMethod.POST)
+	/*@RequestMapping(value="/notification",method=RequestMethod.GET)
 	public ModelAndView getNotification(@RequestParam  Map<String,String> not,HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		session.setAttribute("id",id);
 		String sid=not.get("sid");
-		ModelAndView model=new ModelAndView("page-name");
+		System.out.println(sid);
+		ModelAndView model=new ModelAndView("ticket_e_user");
+		
 		List<String> l=service.viewNotification(id, sid);
 		if(l==null) {
 			model.addObject("msg","Unable to Load the page");
@@ -228,10 +238,10 @@ public class Control {
 			model.addObject("notification",l);
 		}
 		return model;
-		}
+		}*/
 	@RequestMapping(value="/proceed",method=RequestMethod.POST)
 	public ModelAndView proceed(@RequestParam  Map<String,String> proc,HttpSession session) {
-		ModelAndView model=new ModelAndView("Page name");
+		ModelAndView model=new ModelAndView("booking");
 		String id=(String)session.getAttribute("id");
 		session.setAttribute("id",id);
 		String num=proc.get("number");

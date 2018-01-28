@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="java.util.*"%>
+<html lang="en">
+<% String id=(String)session.getAttribute("id"); 
+ArrayList<String> l=(ArrayList<String>)request.getAttribute("train");
+String train_no=l.get(0);
+
+String from=l.get(2);
+String to=l.get(1);
+String price=l.get(3);
+String jdate=l.get(4);
+
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IRCTC 2.0 - Passenger Details</title>
-    <link rel="stylesheet" href="css/uikit.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <spring:url value="/resources/css/style2.css" var="stylish" />
+     <spring:url value="/resources/css/uikit.min.css" var="stylish1" />
+    <link rel="stylesheet" href="${stylish}" />
+    <link rel="stylesheet" href="${stylish1}" />
 </head>
 
 <body>
@@ -86,17 +101,21 @@
                 <div class="uk-card-body">
                     <form>
                         <fieldset class="uk-fieldset">
-
+							<input type="hidden" name="number" value=<%=train_no%> >
+                    <input type="hidden" name="to" value=<%=to%> >
+                    <input type="hidden" name="from" value=<%=from%> >
+                    <input type="hidden" name="price" value=<%=price%> >
+                    <input type="hidden" name="date" value=<%=jdate%> >
                             <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                                <input class="uk-input" type="text" name="n1" placeholder="Enter Passenger Name">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                                <input class="uk-input" type="number" name="g1" placeholder="Enter Passenger's Age">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                                <input class="uk-input" type="number" name="a1" placeholder="Enter Passenger's Aadhar Card Number">
                             </div>
 
                             <div>
@@ -114,15 +133,15 @@
                         <fieldset class="uk-fieldset">
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                                <input class="uk-input" type="text" name="n2" placeholder="Enter Passenger Name">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                                <input class="uk-input" type="number" name="g2" placeholder="Enter Passenger's Age">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                                <input class="uk-input" type="number" name="a2" placeholder="Enter Passenger's Aadhar Card Number">
                             </div>
 
                             <div>
@@ -139,15 +158,15 @@
                         <fieldset class="uk-fieldset">
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                                <input class="uk-input" name="n3" type="text" placeholder="Enter Passenger Name">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                                <input class="uk-input" name="g3" type="number" placeholder="Enter Passenger's Age">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                                <input class="uk-input" name="a3" type="number" placeholder="Enter Passenger's Aadhar Card Number">
                             </div>
 
                         </fieldset>
@@ -163,14 +182,12 @@
 
         </div>
     </div>
-
-
-
-
-    <script src="js/script.js"></script>
-    <script src="js/uikit.min.js"></script>
-    <script src="js/uikit-icons.min.js"></script>
-
+	 <spring:url value="/resources/js/script.js" var="JS" />
+	 <script src="${JS}"></script>
+	 <spring:url value="/resources/js/uikit.min.js" var="JS1" />
+	 <script src="${JS1}"></script>
+	 <spring:url value="/resources/js/uikit-icons.min.js" var="JS2" />
+	 <script src="${JS2}"></script>
 </body>
 
 </html>
