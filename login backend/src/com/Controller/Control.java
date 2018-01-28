@@ -84,24 +84,25 @@ public class Control {
 	}
 	@RequestMapping(value="/accept",method=RequestMethod.POST)
 	public ModelAndView accept(@RequestParam  Map<String,String> acc,HttpSession session) {
-		ModelAndView model=new ModelAndView("booking");
+		ModelAndView model=new ModelAndView("search");
 		String id=(String) session.getAttribute("id");
 		session.setAttribute("id",id);
 		System.out.println(1);
 		String send=acc.get("sender");
 		System.out.println(send);
-		String pnr=acc.get("pnr");
-		System.out.println(pnr);
+		String rpnr=acc.get("pnr");
+	
 		String seat=acc.get("seat");
 		System.out.println(seat);
-		String rpnr=acc.get("rpnr");
+		String pnr=acc.get("rpnr");
+		System.out.println(pnr);
 		System.out.println(rpnr);
 		String rseat=acc.get("rseat");
 		System.out.println(rseat);
 		String result=service.accept(id,send,pnr,rpnr,rseat, seat);
 		System.out.println(result);
 		if(result.equalsIgnoreCase("accepted")) {
-			model.addObject("msg","Thank you for your response");
+			model.addObject("msg","Your seats have been swapped successfully");
 			
 		}else {
 			model.addObject("msg","Something went wrong");
@@ -223,7 +224,7 @@ public class Control {
 		
 		return model;
 	}
-	/*@RequestMapping(value="/notification",method=RequestMethod.GET)
+	@RequestMapping("/notification")
 	public ModelAndView getNotification(@RequestParam  Map<String,String> not,HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		session.setAttribute("id",id);
@@ -238,7 +239,7 @@ public class Control {
 			model.addObject("notification",l);
 		}
 		return model;
-		}*/
+		}
 	@RequestMapping(value="/proceed",method=RequestMethod.POST)
 	public ModelAndView proceed(@RequestParam  Map<String,String> proc,HttpSession session) {
 		ModelAndView model=new ModelAndView("booking");

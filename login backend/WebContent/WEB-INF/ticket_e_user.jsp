@@ -7,8 +7,8 @@
 String id=(String)session.getAttribute("id");
 ArrayList<String> l=(ArrayList<String>)request.getAttribute("notification");
 String sid=l.get(1);
-String spnr=l.get(2);
-String rpnr=l.get(3);
+String spnr=l.get(3);
+String rpnr=l.get(2);
 String sseat=l.get(4);
 String rseat=l.get(5);
 %>
@@ -100,11 +100,11 @@ String rseat=l.get(5);
                         <div class="uk-margin-medium-bottom">
                         <form action="accept" method="post">
                         <input type="hidden" name="sender" value=<%=sid%> >
-                        <input type="hidden" name="pnr" value=<%=sseat%> >
-                        <input type="hidden" name="seat" value=<%=spnr%> >
+                        <input type="hidden" name="pnr" value=<%=spnr%> >
+                        <input type="hidden" name="seat" value=<%=rseat%> >
                         <input type="hidden" name="rpnr" value=<%=rpnr%> >
-                        <input type="hidden" name="rseat" value=<%=rseat%> >
-                            <span class="uk-badge"><%=sseat%></span> ⇋ <span class="uk-badge"><%=rseat %></span>
+                        <input type="hidden" name="rseat" value=<%=sseat%> >
+                            <span class="uk-badge"><%=rseat%></span> ⇋ <span class="uk-badge"><%=sseat %></span>
                             <p class="uk-text-medium uk-margin-small">Swap request from <%=sid%></p>
                             <button class="uk-button uk-button-secondary uk-button-small">Accept</button>
                             <button class="uk-button uk-button-default uk-button-small">Reject</button>

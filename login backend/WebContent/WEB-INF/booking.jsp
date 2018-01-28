@@ -7,7 +7,6 @@
 <% String id=(String)session.getAttribute("id"); 
 ArrayList<String> l=(ArrayList<String>)request.getAttribute("train");
 String train_no=l.get(0);
-
 String from=l.get(2);
 String to=l.get(1);
 String price=l.get(3);

@@ -143,13 +143,18 @@ public class Dao implements Service{
 	@Override
 	public String accept(String id, String send, String pnr,String rpnr,String rseat, String seat) {
 		try {
-			 int i=jdbcTemplate.update("update seat_chart set seat=? where seat=? and pnr=?",new Object[] {Integer.parseInt(rseat),Integer.parseInt(seat),pnr});
+			 System.out.println(rseat);
+			 System.out.println(seat);
+			 System.out.println(pnr);
+			 int s=Integer.parseInt(rseat);
+			 int s2=Integer.parseInt(seat);
+			 int i=jdbcTemplate.update("update seat_chart set seat="+s+" where seat= "+s2+" and pnr= '"+pnr+"'");
 			 System.out.println(i);
 			 if(i==1) {
 				 int j=jdbcTemplate.update("update seat_chart set seat=? where pnr=? and seat=?", new Object[] {Integer.parseInt(seat),rpnr,Integer.parseInt(rseat)});
 				 System.out.println(j);
 				 if(j==1) {
-				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {id,send});
+				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {send,id});
 				 		System.out.println(k);
 				 		return "accepted";
 				 }else {
