@@ -63,7 +63,8 @@ public class Dao implements Service{
 		}
 	}
 	@Override
-	public String login(Login login) {
+	public List<String> login(Login login) {
+		List<String> l=new ArrayList();
 		try {
 			String pass=login.getPassword();
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -79,14 +80,26 @@ public class Dao implements Service{
 			System.out.println(password);
 			String id=jdbcTemplate.queryForObject("select username from customer where username=? and password=?",new Object[] {login.getUsername(),password},String.class);
 			if(id!=null) {
-				
-			return id;
+				l.add(id);
+				String sql="select sender_id from notification where rec_id='"+id+"'";
+				List<String> ll=jdbcTemplate.query(sql,new ResultSetExtractor<List<String>>(){  
+				    @Override  
+				     public List<String> extractData(ResultSet rs) throws SQLException,  
+				            DataAccessException { 
+				    	ArrayList<String> l=new ArrayList<String>();
+				    	l.add(id);
+				    		if(rs.next()) {
+				    			l.add(rs.getString(1));
+				    		}
+				    		return l;
+					}});
+				return ll;
 			}else {
 				return null;
 			}
 		}catch(Exception ee) {
 			//ee.printStackTrace();
-			return null;
+			return l;
 		}
 	}
 	@Override
@@ -127,14 +140,22 @@ public class Dao implements Service{
 		}
 	}
 	
-	
+	@Override
 	public String accept(String id, String send, String pnr,String rpnr,String rseat, String seat) {
 		try {
-			 int i=jdbcTemplate.update("update seat_chart set seat=? where seat=? and pnr=?",new Object[] {Integer.parseInt(rseat),Integer.parseInt(seat),pnr});
+			 System.out.println(rseat);
+			 System.out.println(seat);
+			 System.out.println(pnr);
+			 int s=Integer.parseInt(rseat);
+			 int s2=Integer.parseInt(seat);
+			 int i=jdbcTemplate.update("update seat_chart set seat="+s+" where seat= "+s2+" and pnr= '"+pnr+"'");
+			 System.out.println(i);
 			 if(i==1) {
 				 int j=jdbcTemplate.update("update seat_chart set seat=? where pnr=? and seat=?", new Object[] {Integer.parseInt(seat),rpnr,Integer.parseInt(rseat)});
-				 	if(j==1) {
-				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {id,send});
+				 System.out.println(j);
+				 if(j==1) {
+				 		int k=jdbcTemplate.update("delete from notification where sender_id=? and rec_id=?",new Object[] {send,id});
+				 		System.out.println(k);
 				 		return "accepted";
 				 }else {
 					 return null;
@@ -221,7 +242,7 @@ public class Dao implements Service{
 			String train=l.get(0);
 			String jdate=l.get(4);
 			String id=l.get(5);
-			int last=jdbcTemplate.queryForInt("select seat from train where train_no=?",new Object[] {Integer.parseInt(train)});
+			int last=jdbcTemplate.queryForObject("select seat from train where train_no=?",new Object[] {train},Integer.class);
 			int people=b.size()-1;
 			ret.add(Integer.toString(last));
 			if((last+people)>40) {

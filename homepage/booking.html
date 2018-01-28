@@ -88,15 +88,15 @@
                         <fieldset class="uk-fieldset">
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
+                                <input class="uk-input" type="text" name="n1" placeholder="Enter Passenger Name">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
+                                <input class="uk-input" type="number" name="g1" placeholder="Enter Passenger's Age">
                             </div>
 
                             <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
+                                <input class="uk-input" type="number" name="a1" placeholder="Enter Passenger's Aadhar Card Number">
                             </div>
 
                             <div>
@@ -104,64 +104,71 @@
                             </div>
 
                         </fieldset>
-                    </form>
+
                 </div>
             </div>
 
             <div class="uk-card uk-card-default uk-margin-small" id="form-2">
                 <div class="uk-card-body">
-                    <form>
-                        <fieldset class="uk-fieldset">
 
-                            <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
-                            </div>
+                    <fieldset class="uk-fieldset">
 
-                            <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
-                            </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" name="n2" placeholder="Enter Passenger Name">
+                        </div>
 
-                            <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
-                            </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" name="g2" placeholder="Enter Passenger's Age">
+                        </div>
 
-                            <div>
-                                <button class="uk-button uk-button-default" type="button" id="btn2" onclick="showDiv('form-3');this.style.display = 'none'">Add Passenger</button>
-                            </div>
-                        </fieldset>
-                    </form>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" name="a2" placeholder="Enter Passenger's Aadhar Card Number">
+                        </div>
+
+                        <div>
+                            <button class="uk-button uk-button-default" type="button" id="btn2" onclick="showDiv('form-3');this.style.display = 'none'">Add Passenger</button>
+                        </div>
+                    </fieldset>
+
                 </div>
             </div>
 
             <div class="uk-card uk-card-default uk-margin-small" id="form-3">
                 <div class="uk-card-body">
-                    <form>
-                        <fieldset class="uk-fieldset">
 
-                            <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Enter Passenger Name">
-                            </div>
+                    <fieldset class="uk-fieldset">
 
-                            <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Age">
-                            </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" name="n3" placeholder="Enter Passenger Name">
+                        </div>
 
-                            <div class="uk-margin">
-                                <input class="uk-input" type="number" placeholder="Enter Passenger's Aadhar Card Number">
-                            </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" name="g3" placeholder="Enter Passenger's Age">
+                        </div>
 
-                        </fieldset>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="number" name="a3" placeholder="Enter Passenger's Aadhar Card Number">
+                        </div>
+
+                    </fieldset>
                     </form>
                 </div>
             </div>
 
-            <div class="uk-margin">
-                <a target="_blank" href="food.html"><button class="uk-button uk-button-primary uk-align-center uk-marigin-small">Add Meals</button></a>
-                <button class="uk-button uk-button-primary uk-align-center uk-margin-remove-top">Book Tickets</button>
-
+            <div class="uk-margin uk-grid">
+                <div class="uk-width-1-2">
+                    <a target="_blank" href="food.html" class="uk-align-center"><button class="uk-button uk-button-primary uk-align-center uk-marigin-small"><span uk-icon="icon: plus-circle"></span> Add Meals</button></a>
+                </div>
+                <div class="uk-width-1-2">
+                    <button class="uk-button uk-button-primary uk-align-left uk-margin-remove-top"><span uk-icon="icon: check"></span> Book Tickets</button>
+                </div>
             </div>
 
+
+
         </div>
+
+    </div>
     </div>
 
 
