@@ -58,3 +58,6 @@ def result(request):
         "title": "Result",
     }
     return render(request, "result.html", context)
+
+def transfer(request,):
+    username = Passenger.objects.filter()

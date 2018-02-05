@@ -27,77 +27,77 @@
     <div class="materialContainer">
 
         <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-        <div class="box">
+            <div class="box">
 
-            <div class="title">REGISTER</div>
+                <div class="title">REGISTER</div>
 
-            <div class="input">
-                <label for="name">Name</label>
-                {{ form.name }}
-                <span class="spin"></span>
+                <div class="input">
+                    <label for="name">Name</label>
+                    {{ form.name }}
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="aadhar">Aadhar</label>
+                    {{ form.aadhar }}
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="username">Username</label>
+                    {{ form.username }}
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="password">Password</label>
+                    {{ form.password }}
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="phone">Phone Number</label>
+                    {{ form.phone }}
+                    <span class="spin"></span>
+                </div>
+
+                <div class="button login">
+                    <button type="submit">
+                        <span>GO</span>
+                        <i class="fa fa-check"></i>
+                    </button>
+                </div>
+
             </div>
-
-            <div class="input">
-                <label for="aadhar">Aadhar</label>
-                {{ form.aadhar }}
-                <span class="spin"></span>
-            </div>
-
-            <div class="input">
-                <label for="username">Username</label>
-                {{ form.username }}
-                <span class="spin"></span>
-            </div>
-
-            <div class="input">
-                <label for="password">Password</label>
-                {{ form.password }}
-                <span class="spin"></span>
-            </div>
-
-            <div class="input">
-                <label for="phone">Phone Number</label>
-                {{ form.phone }}
-                <span class="spin"></span>
-            </div>
-
-            <div class="button login">
-                <button type="submit">
-                    <span>GO</span>
-                    <i class="fa fa-check"></i>
-                </button>
-            </div>
-
-        </div>
         </form>
 
-        <div class="overbox">
-            <div class="material-button alt-2">
-                <span class="shape"></span>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="overbox">
+                <div class="material-button alt-2">
+                    <span class="shape"></span>
+                </div>
+
+                <div class="title">LOGIN</div>
+
+                <div class="input">
+                    <label for="login_username">Username</label>
+                    {{ form.username }}
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="login_password">Password</label>
+                    <span class="spin"></span>
+                </div>
+
+                <div class="button">
+                    <button type="submit" action="/transfer">
+                        <span>NEXT</span>
+                    </button>
+                </div>
             </div>
-
-            <div class="title">LOGIN</div>
-
-            <div class="input">
-                <label for="login_username">Username</label>
-                <input type="text" name="username" id="login_username">
-                <span class="spin"></span>
-            </div>
-
-            <div class="input">
-                <label for="login_password">Password</label>
-                <input type="password" name="password" id="login_password">
-                <span class="spin"></span>
-            </div>
-
-            <div class="button">
-                <button>
-                    <span>NEXT</span>
-                </button>
-            </div>
-
-
-        </div>
+        </form>
 
     </div>
 
